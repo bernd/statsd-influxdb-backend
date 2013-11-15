@@ -1,0 +1,25 @@
+{
+  "name": "statsd-influxdb-backend",
+  "version": "0.1.0",
+  "description": "InfluxDB backend for StatsD",
+  "main": "lib/influxdb.js",
+  "dependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bernd/statsd-influxdb-backend.git"
+  },
+  "keywords": [
+    "influxdb",
+    "statsd",
+    "metrics"
+  ],
+  "author": "Bernd Ahlers <bernd@tuneafish.de>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/bernd/statsd-influxdb-backend/issues"
+  }
+}
