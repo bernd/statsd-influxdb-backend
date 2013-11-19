@@ -71,6 +71,12 @@ file and restart the StatsD process.
 
 ## Unsupported Metric Types (Proxy Strategy)
 
+#### Flush Strategy
+
+* Sets
+
+#### Proxy Strategy
+
 * Counter with sampling.
 * Signed gauges. (i.e. `bytes:+4|g`)
 * Sets
