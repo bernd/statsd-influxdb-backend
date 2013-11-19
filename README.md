@@ -69,7 +69,7 @@ file and restart the StatsD process.
 }
 ```
 
-## Unsupported Metric Types (Proxy Strategy)
+## Unsupported Metric Types
 
 #### Flush Strategy
 
