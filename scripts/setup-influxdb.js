@@ -44,6 +44,11 @@ switch (process.argv[2]) {
     httpRequest('post', '/db/statsd/users', {username: 'user', password: 'pass'});
     break;
   }
+  case 'createadmin': {
+    console.log('Creating user "admin" with password "pass"');
+    httpRequest('post', '/db/statsd/users', {username: 'admin', password: 'pass', admin: true});
+    break;
+  }
   default: {
     console.log('Commands: createdb, dropdb, createuser');
   }
