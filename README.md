@@ -39,6 +39,11 @@ You can configure the following settings in your StatsD config file.
 
 ```js
 {
+  graphitePort: 2003,
+  graphiteHost: "graphite.example.com",
+  port: 8125,
+  backends: [ "./backends/graphite", "statsd-influxdb-backend" ],
+
   influxdb: {
     host: '127.0.0.1',   // InfluxDB host. (default 127.0.0.1)
     port: 8086,          // InfluxDB port. (default 8086)
