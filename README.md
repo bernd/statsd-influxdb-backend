@@ -47,6 +47,7 @@ You can configure the following settings in your StatsD config file.
   influxdb: {
     host: '127.0.0.1',   // InfluxDB host. (default 127.0.0.1)
     port: 8086,          // InfluxDB port. (default 8086)
+    ssl: false,          // InfluxDB is hosted over SSL. (default false)
     database: 'dbname',  // InfluxDB database instance. (required)
     username: 'user',    // InfluxDB database username. (required)
     password: 'pass',    // InfluxDB database password. (required)
