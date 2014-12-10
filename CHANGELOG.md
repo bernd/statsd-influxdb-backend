@@ -1,5 +1,7 @@
 StatsD InfluxDB backend - CHANGELOG
 -----------------------------------
+## v0.4.0(2014-12-10)
+* Add support for SET
 
 ## v0.3.0 (2014-08-24)
 

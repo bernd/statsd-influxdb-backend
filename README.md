@@ -1,6 +1,10 @@
 StatsD InfluxDB backend
 -----------------------
 
+Fork of https://github.com/bernd/statsd-influxdb-backend to support SET
+and maintain
+
+
 A naive [InfluxDB](http://influxdb.org/) backend for
 [StatsD](https://github.com/etsy/statsd).
 
@@ -77,10 +81,6 @@ file and restart the StatsD process.
 
 ## Unsupported Metric Types
 
-#### Flush Strategy
-
-* Sets
-
 #### Proxy Strategy
 
 * Counter with sampling.
@@ -91,6 +91,27 @@ file and restart the StatsD process.
 
 StatsD packets are currently mapped to the following InfluxDB events. This is
 a first try and I'm open to suggestions to improve this.
+
+### Set
+
+StatsD package `client_version:1.1|c`, `client_version:1.2|c` as Influx event:
+
+```js
+[
+  {
+    name: 'visior',
+    columns: ['value', 'time'],
+    points:  [['1.1', 1384798553000], ['1.2', 1384798553001]]
+  }
+]
+```
+
+If you are using Grafana to visualize a Set, then using this query or
+something similar
+
+```
+SELECT version, count(version) FROM client_version GROUP BY version, time(1m)
+```
 
 ### Counter
 
