@@ -1,6 +1,6 @@
 {
   "name": "statsd-influxdb-furu",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "InfluxDB backend for StatsD",
   "main": "lib/influxdb.js",
   "dependencies": {
