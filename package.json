@@ -1,6 +1,6 @@
 {
   "name": "statsd-influxdb-furu",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "InfluxDB backend for StatsD",
   "main": "lib/influxdb.js",
   "dependencies": {
@@ -21,6 +21,6 @@
   "contributors": "Vinh Quốc Nguyễn kurei@axcoto.com",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/bernd/statsd-influxdb-backend/issues"
+    "url": "https://github.com/kureikain/statsd-influxdb-backend/issues"
   }
 }

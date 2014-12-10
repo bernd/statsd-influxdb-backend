@@ -2,7 +2,7 @@ StatsD InfluxDB backend
 -----------------------
 
 Fork of https://github.com/bernd/statsd-influxdb-backend to support SET
-and maintain
+and continue maintenance. `furu` means full in Japanese.
 
 
 A naive [InfluxDB](http://influxdb.org/) backend for
@@ -35,7 +35,7 @@ Please be careful!
 ## Installation
 
     $ cd /path/to/statsd
-    $ npm install statsd-influxdb-backend
+    $ npm install statsd-influxdb-furu
 
 ## Configuration
 
@@ -46,7 +46,7 @@ You can configure the following settings in your StatsD config file.
   graphitePort: 2003,
   graphiteHost: "graphite.example.com",
   port: 8125,
-  backends: [ "./backends/graphite", "statsd-influxdb-backend" ],
+  backends: [ "./backends/graphite", "statsd-influxdb-furu" ],
 
   influxdb: {
     host: '127.0.0.1',   // InfluxDB host. (default 127.0.0.1)
@@ -111,6 +111,19 @@ something similar
 
 ```
 SELECT version, count(version) FROM client_version GROUP BY version, time(1m)
+```
+
+Also, to count for the size of unique value, another InfluxDB event is
+also pushed
+
+```js
+[
+  {
+    name: 'visitor_count',
+    columns: ['value', 'time'],
+    points:  [set.length, 1384798553001]
+  }
+]
 ```
 
 ### Counter
