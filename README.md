@@ -59,7 +59,8 @@ You can configure the following settings in your StatsD config file.
       suffix: 'raw',       // Metric name suffix. (default 'raw')
       flushInterval: 1000  // Flush interval for the internal buffer.
                            // (default 1000)
-    }
+    },
+    includeStatsdMetrics: false // Send statsd metrics to InfluxDB. (default false)
   }
 }
 ```
