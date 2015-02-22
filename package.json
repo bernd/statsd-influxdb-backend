@@ -1,6 +1,6 @@
 {
-  "name": "statsd-influxdb-backend",
-  "version": "0.3.0",
+  "name": "statsd-influxdb-furu",
+  "version": "0.5.1",
   "description": "InfluxDB backend for StatsD",
   "main": "lib/influxdb.js",
   "dependencies": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bernd/statsd-influxdb-backend.git"
+    "url": "git://github.com/kureikain/statsd-influxdb-backend.git"
   },
   "keywords": [
     "influxdb",
@@ -18,8 +18,9 @@
     "metrics"
   ],
   "author": "Bernd Ahlers <bernd@tuneafish.de>",
+  "contributors": "Vinh Quốc Nguyễn kurei@axcoto.com",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/bernd/statsd-influxdb-backend/issues"
+    "url": "https://github.com/kureikain/statsd-influxdb-backend/issues"
   }
 }

@@ -1,6 +1,10 @@
 StatsD InfluxDB backend
 -----------------------
 
+Fork of https://github.com/bernd/statsd-influxdb-backend to support SET
+and continue maintenance. `furu` means full in Japanese.
+
+
 A naive [InfluxDB](http://influxdb.org/) backend for
 [StatsD](https://github.com/etsy/statsd).
 
@@ -31,7 +35,7 @@ Please be careful!
 ## Installation
 
     $ cd /path/to/statsd
-    $ npm install statsd-influxdb-backend
+    $ npm install statsd-influxdb-furu
 
 ## Configuration
 
@@ -42,7 +46,7 @@ You can configure the following settings in your StatsD config file.
   graphitePort: 2003,
   graphiteHost: "graphite.example.com",
   port: 8125,
-  backends: [ "./backends/graphite", "statsd-influxdb-backend" ],
+  backends: [ "./backends/graphite", "statsd-influxdb-furu" ],
 
   influxdb: {
     host: '127.0.0.1',   // InfluxDB host. (default 127.0.0.1)
