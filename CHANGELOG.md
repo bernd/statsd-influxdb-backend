@@ -1,6 +1,14 @@
 StatsD InfluxDB backend - CHANGELOG
 -----------------------------------
 
+## v0.4.0 (2015-02-22)
+
+* Add configuration option to enable sending internal statsd metrics.
+* Add SET support.
+* Fix problem with histograms breaking data flushes.
+* Add SSL support.
+* Improve configuration example in README.
+
 ## v0.3.0 (2014-08-24)
 
 * Allow gauges with a value of 0 to be sent. (#2)
