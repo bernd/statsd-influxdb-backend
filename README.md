@@ -60,7 +60,9 @@ You can configure the following settings in your StatsD config file.
       flushInterval: 1000  // Flush interval for the internal buffer.
                            // (default 1000)
     },
-    includeStatsdMetrics: false // Send statsd metrics to InfluxDB. (default false)
+    includeStatsdMetrics: false, // Send internal statsd metrics to InfluxDB. (default false)
+    includeInfluxdbMetrics: false // Send internal backend metrics to InfluxDB. (default false)
+                                  // Requires includeStatsdMetrics to be enabled.
   }
 }
 ```
@@ -300,6 +302,16 @@ The payload of a HTTP request might look like this:
   }
 ]
 ```
+## Backend Metrics
+
+The following internal metrics are calculated for each flush:
+
+- `statsd.influxdbStats.flush_time` - Time taken to process a complete flush in ms. Excluding the asynchronous HTTP Post.
+- `statsd.influxdbStats.http_response_time` - Response time in ms of the InfluxDB HTTP endpoint when POSTing data.
+- `statsd.influxdbStats.payload_size` - The size in bytes of the JSON payload.
+- `statsd.influxdbStats.num_stats` - The number of metrics sent to InfluxDB in the last flush.
+
+This is added to the set of internal statsd metrics. If both `influxdb.includeStatsdMetrics` and `influxdb.includeInfluxdbMetrics` are enabled, then these will be sent to InfluxDB when using the flush strategy.
 
 ## Contributing
 
