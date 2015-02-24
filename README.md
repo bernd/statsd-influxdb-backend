@@ -302,6 +302,7 @@ The payload of a HTTP request might look like this:
   }
 ]
 ```
+
 ## Backend Metrics
 
 The following internal metrics are calculated for each flush:
@@ -311,7 +312,9 @@ The following internal metrics are calculated for each flush:
 - `statsd.influxdbStats.payload_size` - The size in bytes of the JSON payload.
 - `statsd.influxdbStats.num_stats` - The number of metrics sent to InfluxDB in the last flush.
 
-This is added to the set of internal statsd metrics. If both `influxdb.includeStatsdMetrics` and `influxdb.includeInfluxdbMetrics` are enabled, then these will be sent to InfluxDB when using the flush strategy.
+These are added to the set of internal statsd metrics. If both `influxdb.includeStatsdMetrics` and `influxdb.includeInfluxdbMetrics` are enabled, then these will be sent to InfluxDB when using the flush strategy.
+
+The internal metrics can also can be viewed using the `stats` command on the [StatsD TCP Admin Interface](https://github.com/etsy/statsd/blob/master/docs/admin_interface.md)
 
 ## Contributing
 
