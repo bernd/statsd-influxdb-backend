@@ -1,12 +1,16 @@
 StatsD InfluxDB backend - CHANGELOG
 -----------------------------------
 
+## v0.4.1 (2015-02-23)
+
+* Use prefixStats setting instead of hardcoding prefix. (#6)
+
 ## v0.4.0 (2015-02-22)
 
-* Add configuration option to enable sending internal statsd metrics.
-* Add SET support.
-* Fix problem with histograms breaking data flushes.
-* Add SSL support.
+* Add configuration option to enable sending internal statsd metrics. (#6)
+* Add SET support. (#7)
+* Fix problem with histograms breaking data flushes. (#8)
+* Add SSL support. (#3)
 * Improve configuration example in README.
 
 ## v0.3.0 (2014-08-24)
