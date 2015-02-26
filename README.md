@@ -47,7 +47,16 @@ You can configure the following settings in your StatsD config file.
   influxdb: {
     host: '127.0.0.1',   // InfluxDB host. (default 127.0.0.1)
     port: 8086,          // InfluxDB port. (default 8086)
-    ssl: false,          // InfluxDB is hosted over SSL. (default false)
+    ssl: { // http://nodejs.org/api/tls.html#tls_tls_connect_options_callback
+      ca: "/path/to/ca",        // InfluxDB CA cert for SSL connection.  (Optional)
+      cert: "/path/to/cert",    // InfluxDB cert for SSL connection.  (Optional)
+      enable: false,            // InfluxDB is hosted over SSL. (default false)
+      ciphers:                  // InfluxDB cert for SSL connection.  (Optional)
+      key: "/path/to/key",      // InfluxDB cert for SSL connection.  (Optional)
+      pfx: "/path/to/pfx",      // InfluxDB cert for SSL connection.  (Optional)
+      rejectUnauthorized: true, // InfluxDB cert for SSL connection.  (Optional)
+      secureProtocol:           // InfluxDB cert for SSL connection.  (Optional)
+    },
     database: 'dbname',  // InfluxDB database instance. (required)
     username: 'user',    // InfluxDB database username. (required)
     password: 'pass',    // InfluxDB database password. (required)
