@@ -1,6 +1,12 @@
 StatsD InfluxDB backend - CHANGELOG
 -----------------------------------
 
+## v0.5.0 (2015-04-02)
+
+* Unbreak conditional. (#13)
+* Updated regex for statsd metrics. (#12)
+* Expose internal backend metrics. (#9)
+
 ## v0.4.1 (2015-02-23)
 
 * Use prefixStats setting instead of hardcoding prefix. (#6)
