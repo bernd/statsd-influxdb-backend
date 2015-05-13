@@ -50,8 +50,8 @@ You can configure the following settings in your StatsD config file.
     version: 0.8,        // InfluxDB port. (default 0.8)
     ssl: false,          // InfluxDB is hosted over SSL. (default false)
     database: 'dbname',  // InfluxDB database instance. (required)
-    username: 'user',    // InfluxDB database username. (required)
-    password: 'pass',    // InfluxDB database password. (required)
+    username: 'user',    // InfluxDB database username.
+    password: 'pass',    // InfluxDB database password.
     flush: {
       enable: true       // Enable regular flush strategy. (default true)
     },
