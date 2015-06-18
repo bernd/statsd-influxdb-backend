@@ -1,5 +1,8 @@
 StatsD InfluxDB backend - CHANGELOG
 -----------------------------------
+## v0.5.1 (2015-06-18)
+
+* Works with InfluxDb 0.9 line protocol `<measurement>[,<tag-key>=<tag-value>...] <field-key>=<field-value>[,<field2-key>=<field2-value>...] [unix-nano-timestamp]`
 
 ## v0.5.0 (2015-04-02)
 
