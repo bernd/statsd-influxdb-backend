@@ -3,7 +3,7 @@ StatsD InfluxDB backend - CHANGELOG
 
 ## v0.6.0 (2015-06-23)
 
-* Initial InfluxDB 0.9 API support (#14, 17)
+* Initial InfluxDB 0.9 API support (#14, #17)
 * Make username and password config options optional. (#15)
 
 ## v0.5.0 (2015-04-02)
