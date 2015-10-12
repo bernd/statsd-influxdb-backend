@@ -1,6 +1,8 @@
 StatsD InfluxDB backend
 -----------------------
 
+**LOOKING FOR A MAINTAINER:** [I am looking for a maintainer for this project](https://github.com/bernd/statsd-influxdb-backend/issues/26)
+
 A naive [InfluxDB](http://influxdb.org/) backend for
 [StatsD](https://github.com/etsy/statsd).
 
