@@ -47,23 +47,23 @@ You can configure the following settings in your StatsD config file.
   backends: [ "./backends/graphite", "statsd-influxdb-backend" ],
 
   influxdb: {
-    host: '127.0.0.1',   // InfluxDB host. (default 127.0.0.1)
-    port: 8086,          // InfluxDB port. (default 8086)
-    version: 0.8,        // InfluxDB version. (default 0.8)
-    ssl: false,          // InfluxDB is hosted over SSL. (default false)
-    database: 'dbname',  // InfluxDB database instance. (required)
-    username: 'user',    // InfluxDB database username.
-    password: 'pass',    // InfluxDB database password.
+    host: '127.0.0.1',            // InfluxDB host. (default 127.0.0.1)
+    port: 8086,                   // InfluxDB port. (default 8086)
+    ssl: false,                   // InfluxDB is hosted over SSL. (default false)
+    version: 0.8,                 // InfluxDB version. (default 0.8)
+    database: 'dbname',           // InfluxDB database instance. (required)
+    retentionPolicy: 'default'    // InfluxDB retention policy. (default default)
+    username: 'user',             // InfluxDB database username.
+    password: 'pass',             // InfluxDB database password.
     flush: {
-      enable: true       // Enable regular flush strategy. (default true)
+      enable: true                // Enable regular flush strategy. (default true)
     },
     proxy: {
-      enable: false,       // Enable the proxy strategy. (default false)
-      suffix: 'raw',       // Metric name suffix. (default 'raw')
-      flushInterval: 1000  // Flush interval for the internal buffer.
-                           // (default 1000)
+      enable: false,              // Enable the proxy strategy. (default false)
+      suffix: 'raw',              // Metric name suffix. (default 'raw')
+      flushInterval: 1000         // Flush interval for the internal buffer. (default 1000)
     },
-    includeStatsdMetrics: false, // Send internal statsd metrics to InfluxDB. (default false)
+    includeStatsdMetrics: false,  // Send internal statsd metrics to InfluxDB. (default false)
     includeInfluxdbMetrics: false // Send internal backend metrics to InfluxDB. (default false)
                                   // Requires includeStatsdMetrics to be enabled.
   }
@@ -101,7 +101,7 @@ StatsD package `client_version:1.1|c`, `client_version:1.2|c` as Influx event:
 ```js
 [
   {
-    name: 'visior',
+    name: 'visitor',
     columns: ['value', 'time'],
     points:  [['1.1', 1384798553000], ['1.2', 1384798553001]]
   }
@@ -111,7 +111,7 @@ StatsD package `client_version:1.1|c`, `client_version:1.2|c` as Influx event:
 If you are using Grafana to visualize a Set, then using this query or
 something similar
 
-```
+```SQL
 SELECT version, count(version) FROM client_version GROUP BY version, time(1m)
 ```
 
@@ -260,6 +260,44 @@ StatsD packet `bytes:123|g` as InfluxDB event:
     points: [['gauge', 123, 1384472029572]]
   }
 ]
+```
+
+## InfluxDB >= 0.11
+
+In newer versions of InfluxDB, it's better to differentiate data with tags than with detailed measurement names.  Tags are indexed, meaning that queries on tags are more performant than those on fields and can easily be used in `GROUP BY()` clauses.  For this reason, with InfluxDB version >= 0.11, StatsD names are parsed such that the first token becomes the measurement name and subsequent tokens become tags.
+
+StatsD packets `appname.datacenter.hostname.requests:1|c` and `appname.datacenter.hostname.bytes.gauge:123|g` as InfluxDB event:
+
+```js
+[
+  {
+    name: 'appname',
+    tag1: 'datacenter',
+    tag2: 'hostname',
+    tag3: 'requests',
+    columns: ['value', 'time'],
+    points: [[802, 1384798553000]]
+  },
+  {
+    name: 'appname',
+    tag1: 'datacenter',
+    tag2: 'hostname',
+    tag3: 'bytes',
+    tag4: 'gauge',
+    columns: ['value', 'time'],
+    points: [[123, 1384798553000]]
+  }
+]
+```
+
+In Grafana, you can then graph requests by datacenter with a query like:
+```SQL
+SELECT mean("value") from 'appname' WHERE "tag3" = 'requests' AND $timeFilter GROUP BY time($interval), "tag1"
+```
+
+Or, you could graph bytes transferred by host with a query like:
+```SQL
+SELECT mean("value") from 'appname' WHERE "tag3" = 'bytes' AND $timeFilter GROUP BY time($interval), "tag2"
 ```
 
 ## Proxy Strategy Notes
